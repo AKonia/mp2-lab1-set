@@ -88,9 +88,9 @@ int TBitField::GetBit(const int n) const // получить значение б
 TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 {
 	BitLen = bf.BitLen;
-	MemLen = bf.MemLen;
 	if(MemLen != bf.MemLen)
 	{
+		MemLen = bf.MemLen;
 		if(pMem != 0)
 			delete[] pMem;
 		pMem = new TELEM[MemLen];
@@ -154,7 +154,7 @@ TBitField TBitField::operator~(void) // отрицание
 // ввод/вывод
 
 istream &operator>>(istream &istr, TBitField &bf) // ввод
-{	// ограничение на ввод представляет собой 
+{	// ограничение на ввод представляет собоймаксимальную длину битового поля INPUT_MAX_SIZE
 	const int INPUT_MAX_SIZE = 256;
 	char line[INPUT_MAX_SIZE];
 	istr.get(line, INPUT_MAX_SIZE-1, ' ');
