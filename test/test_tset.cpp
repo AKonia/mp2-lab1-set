@@ -295,3 +295,21 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
+TEST(TSet, can_assign_bitfield_to_set)
+{
+	TBitField bf(10);
+	bf.SetBit(2);
+	TSet setFromBf(bf), pureSet(10);
+	pureSet.InsElem(2);
+	EXPECT_EQ(pureSet, setFromBf);
+}
+
+//TEST(TSet, no_execptions_in_using_pointer_to_set)
+//{
+//	TSet * ts = new TSet(10);
+//	for(int i = 0; i < )
+//	EXPECT_EQ(pureSet, setFromBf);
+//}
+
+
